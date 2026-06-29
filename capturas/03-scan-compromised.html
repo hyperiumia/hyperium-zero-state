@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hyperium ZERO-STATE - Scan COMPROMISED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 40px 20px; }
+  .frame { width: 900px; background: #1a1a1a; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05); }
+  .titlebar { background: #252525; padding: 14px 20px; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+  .titlebar span { color: #666; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-left: 12px; }
+  .terminal { padding: 24px 28px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.65; color: #c8c8c8; background: #0d0d0d; }
+  .prompt { color: #28c840; } .cmd { color: #e8e8e8; font-weight: 500; } .flag { color: #5bc0de; }
+  .label { color: #888; } .value { color: #f0f0f0; } .accent { color: #e8c547; font-weight: 700; }
+  .sep { color: #333; letter-spacing: 1px; }
+  .critical { color: #ff4444; font-weight: 700; }
+  .critical-badge { background: #ff4444; color: #fff; padding: 2px 16px; font-weight: 700; border-radius: 3px; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+  .high { color: #f0ad4e; } .info { color: #5bc0de; } .dim { color: #555; } .ok { color: #28c840; }
+  .hash { color: #888; font-size: 12px; }
+  .ioc-title { color: #ff4444; font-weight: 700; font-size: 13px; margin-top: 4px; }
+  .section-title { color: #e8c547; font-weight: 700; font-size: 13px; margin-top: 4px; }
+  .legal { color: #aaa; font-size: 12.5px; line-height: 1.6; }
+  .spacer { height: 3px; }
+  .alert-line { background: rgba(255,68,68,0.08); padding: 1px 0; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="titlebar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <span>root@fileserver-03:~/zero-state</span>
+  </div>
+  <div class="terminal">
+    <div><span class="prompt">root@fileserver-03</span>:<span class="prompt">~/zero-state</span>$ <span class="cmd">./zero-state</span> <span class="flag">scan</span> --client <span class="value">"CorpFinanciera SA"</span> --authorized-by <span class="value">"Gerente TI - Carlos Vega"</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="accent">  Hyperium ZERO-STATE</span> <span class="dim">-- Full Integrity Scan</span></div>
+    <div><span class="dim">  Client:</span> <span class="value">CorpFinanciera SA</span> <span class="dim">| Authorized by:</span> <span class="value">Gerente TI</span> <span class="dim">| Target:</span> <span class="value">localhost</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [1/4]</span> <span class="info">Persistence Audit...</span></div>
+    <div><span class="dim">      8 checks completed,</span> <span class="critical">3 findings</span></div>
+    <div><span class="dim">  [2/4]</span> <span class="info">Network State...</span></div>
+    <div><span class="dim">      41 connections,</span> <span class="critical">4 suspicious</span></div>
+    <div><span class="dim">  [3/4]</span> <span class="info">Integrity Check...</span></div>
+    <div><span class="dim">      23 files checked,</span> <span class="high">2 anomalies</span></div>
+    <div><span class="dim">  [4/4]</span> <span class="info">Memory Scan...</span></div>
+    <div><span class="dim">      1203 processes,</span> <span class="critical">6 suspicious</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="sep">  ============================================================</span></div>
+    <div><span class="accent">  HYPERIUM ZERO-STATE</span> <span class="dim">-- ACTA NOTARIAL DIGITAL</span></div>
+    <div><span class="dim">  Pre-Engagement Integrity Validator v0.1.0</span></div>
+    <div><span class="sep">  ============================================================</span></div>
+    <div class="spacer"></div>
+    <div>  VEREDICTO:  <span class="critical-badge">COMPROMISED</span></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  ID:</span>             <span class="value">ZS-20260629150847-e4b2a8f3</span></div>
+    <div><span class="dim">  Generated:</span>      <span class="value">2026-06-29 15:08:47.291 UTC</span></div>
+    <div><span class="dim">  Client:</span>         <span class="value">CorpFinanciera SA</span></div>
+    <div><span class="dim">  Duration:</span>       <span class="value">4s</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === PERSISTENCE AUDIT ===</div>
+    <div><span class="dim">  Checks:</span> 8/8 completed | <span class="critical">Failed: 3</span> | <span class="critical">Critical: 2</span></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === NETWORK STATE ===</div>
+    <div><span class="dim">  Connections:</span>    <span class="value">41 (4 suspicious)</span></div>
+    <div><span class="dim">  Listeners:</span>      <span class="value">9 (3 suspicious)</span></div>
+    <div><span class="dim">  Promiscuous:</span>    <span class="critical">eth0 - PROMISCUOUS MODE</span></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === INTEGRITY CHECK ===</div>
+    <div><span class="dim">  Files checked:</span>  <span class="value">23</span></div>
+    <div><span class="dim">  Anomalies:</span>      <span class="high">2 (modified system binaries)</span></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === MEMORY SCAN ===</div>
+    <div><span class="dim">  Processes:</span>      <span class="value">1203 (6 suspicious)</span></div>
+    <div><span class="dim">  Hidden procs:</span>   <span class="critical">true</span></div>
+    <div><span class="dim">  Injection ind.:</span> <span class="critical">3</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="ioc-title">  === INDICADORES DE COMPROMISO (15) ===</span></div>
+    <div class="spacer"></div>
+    <div class="alert-line"><span class="critical">  [CRITICAL]</span> <span class="label">Persistence</span> <span class="dim">-- Systemd service with suspicious ExecStart</span></div>
+    <div class="alert-line"><span class="dim">    Location:</span> <span class="value">/etc/systemd/system/.hidden-svc.service</span></div>
+    <div class="alert-line"><span class="dim">    Value:</span>    <span class="high">ExecStart=/dev/shm/.x (base64 encoded payload)</span></div>
+    <div class="spacer"></div>
+    <div class="alert-line"><span class="critical">  [CRITICAL]</span> <span class="label">Persistence</span> <span class="dim">-- LD_PRELOAD injection detected</span></div>
+    <div class="alert-line"><span class="dim">    Location:</span> <span class="value">/etc/ld.so.preload</span></div>
+    <div class="alert-line"><span class="dim">    Value:</span>    <span class="high">/usr/lib/libprocesshider.so</span></div>
+    <div class="spacer"></div>
+    <div class="alert-line"><span class="critical">  [CRITICAL]</span> <span class="label">Network</span> <span class="dim">-- Active connection to known C2 port</span></div>
+    <div class="alert-line"><span class="dim">    Location:</span> <span class="value">PID: 4891 (kworker/0:2)</span></div>
+    <div class="alert-line"><span class="dim">    Value:</span>    <span class="high">185.220.101.34:4444 ESTABLISHED</span></div>
+    <div class="spacer"></div>
+    <div class="alert-line"><span class="critical">  [CRITICAL]</span> <span class="label">Network</span> <span class="dim">-- Suspicious listener on non-standard port</span></div>
+    <div class="alert-line"><span class="dim">    Location:</span> <span class="value">0.0.0.0:1337</span></div>
+    <div class="alert-line"><span class="dim">    Value:</span>    <span class="high">PID: 2156 (bash) - reverse shell listener</span></div>
+    <div class="spacer"></div>
+    <div class="alert-line"><span class="critical">  [CRITICAL]</span> <span class="label">Memory</span> <span class="dim">-- Hidden processes detected via LD_PRELOAD</span></div>
+    <div class="alert-line"><span class="dim">    Location:</span> <span class="value">System-wide (libprocesshider.so active)</span></div>
+    <div class="alert-line"><span class="dim">    Value:</span>    <span class="high">3 processes hidden from ps/top/htop</span></div>
+    <div class="spacer"></div>
+    <div class="alert-line"><span class="high">  [HIGH]</span> <span class="label">Integrity</span> <span class="dim">-- System binary modified</span></div>
+    <div class="alert-line"><span class="dim">    Location:</span> <span class="value">/usr/bin/ssh</span></div>
+    <div class="alert-line"><span class="dim">    Value:</span>    <span class="high">SHA-256 mismatch: expected a3f2... actual 7b1e... (backdoored)</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === DECLARACION LEGAL ===</div>
+    <div class="spacer"></div>
+    <div class="alert-line"><span class="legal">  </span><span class="critical" style="font-size:14px;">ALERTA CRITICA: COMPROMISO PREVIO DETECTADO</span></div>
+    <div class="spacer"></div>
+    <div class="legal">  Por medio de la presente, Hyperiumia CERTIFICA que el equipo identificado como</div>
+    <div class="legal">  'fileserver-03' fue examinado de forma exhaustiva el 2026-06-29 15:08:47.291 UTC.</div>
+    <div class="spacer"></div>
+    <div class="legal">  RESULTADO: El equipo se encuentra <span class="critical">COMPROMETIDO</span>. Se detectaron 15 indicadores</div>
+    <div class="legal">  de compromiso que evidencian actividad maliciosa PREVIA a la fecha de este examen.</div>
+    <div class="spacer"></div>
+    <div class="legal">  <span class="critical" style="font-weight:700;">RECOMENDACION INMEDIATA:</span> Detener todo engagement ofensivo. Este caso se</div>
+    <div class="legal">  convierte en una <span class="value">Respuesta a Incidentes (DFIR)</span>. Los IoCs se documentan en el</div>
+    <div class="legal">  cuerpo de este dictamen para su entrega al equipo de respuesta.</div>
+    <div class="spacer"></div>
+    <div class="legal">  Esta certificacion prueba de forma fehaciente e inmutable que el compromiso</div>
+    <div class="legal">  existia ANTES del inicio de cualquier actividad por parte de Hyperiumia.</div>
+    <div class="spacer"></div>
+    <div><span class="hash">  Firma digital (SHA-256): e4b2a8f3c1d5096e7a2b4c6d8e0f1a3b5c7d9e1f3a5b7c9d0e2f4a6b8c0d2e</span></div>
+    <div class="spacer"></div>
+    <div><span class="sep">  ============================================================</span></div>
+    <div><span class="dim">  ISO/IEC 27037:2012 Compliant</span></div>
+    <div><span class="accent">  Hyperiumia</span> <span class="dim">-- Patricio Tirado, CEO</span></div>
+    <div><span class="sep">  ============================================================</span></div>
+  </div>
+</div>
+</body>
+</html>

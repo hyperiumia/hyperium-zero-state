@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hyperium ZERO-STATE - Info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    font-family: 'Inter', sans-serif;
+  }
+  .frame {
+    width: 960px;
+    background: #1a1a1a;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .titlebar {
+    background: #252525;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #febc2e; }
+  .dot.g { background: #28c840; }
+  .titlebar span {
+    color: #666;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    margin-left: 12px;
+  }
+  .terminal {
+    padding: 28px 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #c8c8c8;
+    background: #0d0d0d;
+  }
+  .prompt { color: #28c840; }
+  .cmd { color: #e8e8e8; font-weight: 500; }
+  .flag { color: #5bc0de; }
+  .separator { color: #333; }
+  .label { color: #888; }
+  .value { color: #f0f0f0; }
+  .accent { color: #e8c547; font-weight: 700; }
+  .brand { color: #e8c547; font-weight: 700; letter-spacing: 2px; }
+  .version { color: #5bc0de; }
+  .std { color: #888; }
+  .contact { color: #5bc0de; }
+  .os { color: #28c840; }
+  .proc { color: #f0ad4e; }
+  .spacer { height: 4px; }
+  .sep-line { color: #333; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="titlebar">
+    <div class="dot r"></div>
+    <div class="dot y"></div>
+    <div class="dot g"></div>
+    <span>root@h0eth777:~/hyperium-zero-state</span>
+  </div>
+  <div class="terminal">
+    <div><span class="prompt">root@h0eth777</span><span class="separator">:</span><span class="prompt">~/zero-state</span><span class="separator">$</span> <span class="cmd">./target/release/zero-state</span> <span class="flag">info</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="accent">  Hyperium</span> <span class="brand">ZERO-STATE</span> <span class="version">v0.1.0</span></div>
+    <div><span class="std">  Pre-Engagement Integrity Validator</span></div>
+    <div><span class="sep-line">  ------------------------------------------</span></div>
+    <div><span class="label">  Version:</span>        <span class="value">0.1.0</span></div>
+    <div><span class="label">  Language:</span>       <span class="value">Rust 2021 Edition</span></div>
+    <div><span class="label">  Standard:</span>       <span class="value">ISO/IEC 27037:2012</span></div>
+    <div><span class="label">  Evidence:</span>       <span class="value">SHA-256 chained (tamper-evident)</span></div>
+    <div><span class="label">  YARA:</span>           <span class="value">Statically compiled rules</span></div>
+    <div><span class="label">  Network:</span>        <span class="accent">Air-Gapped</span> <span class="label">(no outbound connections)</span></div>
+    <div><span class="label">  Hostname:</span>       <span class="value">srv-web-prod-01</span></div>
+    <div><span class="label">  OS:</span>             <span class="os">Linux 5.15.0 Ubuntu 22.04 LTS</span></div>
+    <div><span class="label">  Processes:</span>      <span class="proc">847</span></div>
+    <div><span class="label">  Author:</span>         <span class="value">Patricio Tirado</span> <span class="label">-- CEO, Hyperiumia</span></div>
+    <div><span class="label">  Contact:</span>        <span class="contact">hyperiumia@protonmail.com</span></div>
+    <div class="spacer"></div>
+  </div>
+</div>
+</body>
+</html>

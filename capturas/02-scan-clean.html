@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hyperium ZERO-STATE - Scan CLEAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 40px 20px; }
+  .frame { width: 900px; background: #1a1a1a; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05); }
+  .titlebar { background: #252525; padding: 14px 20px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+  .titlebar span { color: #666; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-left: 12px; }
+  .terminal { padding: 24px 28px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.65; color: #c8c8c8; background: #0d0d0d; }
+  .prompt { color: #28c840; } .cmd { color: #e8e8e8; font-weight: 500; } .flag { color: #5bc0de; }
+  .label { color: #888; } .value { color: #f0f0f0; }
+  .accent { color: #e8c547; font-weight: 700; } .brand { color: #e8c547; font-weight: 700; letter-spacing: 2px; }
+  .sep { color: #333; letter-spacing: 1px; }
+  .clean { color: #28c840; font-weight: 700; }
+  .clean-badge { background: #28c840; color: #000; padding: 2px 16px; font-weight: 700; border-radius: 3px; }
+  .ok { color: #28c840; } .info { color: #5bc0de; } .dim { color: #555; }
+  .hash { color: #888; font-size: 12px; }
+  .spacer { height: 3px; }
+  .section-title { color: #e8c547; font-weight: 700; font-size: 13px; margin-top: 4px; }
+  .legal { color: #aaa; font-size: 12.5px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="titlebar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <span>root@srv-web-prod-01:~/zero-state</span>
+  </div>
+  <div class="terminal">
+    <div><span class="prompt">root@srv-web-prod-01</span>:<span class="prompt">~/zero-state</span>$ <span class="cmd">./zero-state</span> <span class="flag">scan</span> --client <span class="value">"Banco Nacional de Chile"</span> --authorized-by <span class="value">"CISO - Maria Rodriguez"</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="accent">  Hyperium ZERO-STATE</span> <span class="dim">-- Full Integrity Scan</span></div>
+    <div><span class="dim">  Client:</span> <span class="value">Banco Nacional de Chile</span> <span class="dim">| Authorized by:</span> <span class="value">CISO</span> <span class="dim">| Target:</span> <span class="value">localhost</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  [1/4]</span> <span class="info">Persistence Audit...</span></div>
+    <div><span class="dim">      8 checks completed,</span> <span class="ok">0 findings</span></div>
+    <div><span class="dim">  [2/4]</span> <span class="info">Network State...</span></div>
+    <div><span class="dim">      24 connections,</span> <span class="ok">0 suspicious</span></div>
+    <div><span class="dim">  [3/4]</span> <span class="info">Integrity Check...</span></div>
+    <div><span class="dim">      23 files checked,</span> <span class="ok">0 anomalies</span></div>
+    <div><span class="dim">  [4/4]</span> <span class="info">Memory Scan...</span></div>
+    <div><span class="dim">      847 processes,</span> <span class="ok">0 suspicious</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div><span class="sep">  ============================================================</span></div>
+    <div><span class="accent">  HYPERIUM ZERO-STATE</span> <span class="dim">-- ACTA NOTARIAL DIGITAL</span></div>
+    <div><span class="dim">  Pre-Engagement Integrity Validator v0.1.0</span></div>
+    <div><span class="sep">  ============================================================</span></div>
+    <div class="spacer"></div>
+    <div>  VEREDICTO:  <span class="clean-badge">CLEAN</span></div>
+    <div class="spacer"></div>
+    <div><span class="dim">  ID:</span>             <span class="value">ZS-20260629141523-a7f3c2e1</span></div>
+    <div><span class="dim">  Generated:</span>      <span class="value">2026-06-29 14:15:23.847 UTC</span></div>
+    <div><span class="dim">  Client:</span>         <span class="value">Banco Nacional de Chile</span></div>
+    <div><span class="dim">  Authorized by:</span>  <span class="value">CISO - Maria Rodriguez</span></div>
+    <div><span class="dim">  Target:</span>         <span class="value">srv-web-prod-01 (localhost)</span></div>
+    <div><span class="dim">  Hostname:</span>       <span class="value">srv-web-prod-01</span></div>
+    <div><span class="dim">  OS:</span>             <span class="ok">linux</span></div>
+    <div><span class="dim">  Duration:</span>       <span class="value">3s</span></div>
+    <div><span class="dim">  Dictamen Hash:</span>  <span class="hash">a7f3c2e1b9d4058f6e2a1c3b8d7f9e0a4b6c8d2e...</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === EVIDENCE CHAIN ===</div>
+    <div><span class="dim">  Entries:</span>        <span class="value">16</span></div>
+    <div><span class="dim">  Chain Valid:</span>    <span class="ok">true</span></div>
+    <div><span class="dim">  Last Hash:</span>      <span class="hash">8f2d4e6a1b3c5d7e9f0a2b4c6d8e0f1a3b5c7d9e...</span></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === PERSISTENCE AUDIT ===</div>
+    <div><span class="dim">  Checks:</span>         <span class="value">8/8 passed</span></div>
+    <div><span class="dim">  Failed:</span>         <span class="ok">0</span></div>
+    <div><span class="dim">  Critical:</span>       <span class="ok">0</span></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === NETWORK STATE ===</div>
+    <div><span class="dim">  Connections:</span>    <span class="value">24 (0 suspicious)</span></div>
+    <div><span class="dim">  Listeners:</span>      <span class="value">5 (0 suspicious)</span></div>
+    <div><span class="dim">  Promiscuous:</span>    <span class="ok">None</span></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === INTEGRITY CHECK ===</div>
+    <div><span class="dim">  Files checked:</span>  <span class="value">23</span></div>
+    <div><span class="dim">  Anomalies:</span>      <span class="ok">0</span></div>
+    <div><span class="dim">  Unsigned drivers:</span> <span class="ok">0</span></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === MEMORY SCAN ===</div>
+    <div><span class="dim">  Processes:</span>      <span class="value">847 (0 suspicious)</span></div>
+    <div><span class="dim">  Hidden procs:</span>   <span class="ok">false</span></div>
+    <div><span class="dim">  Injection ind.:</span> <span class="ok">0</span></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="section-title">  === DECLARACION LEGAL ===</div>
+    <div class="spacer"></div>
+    <div class="legal">  Por medio de la presente, Hyperiumia CERTIFICA que el equipo identificado como</div>
+    <div class="legal">  'srv-web-prod-01' fue examinado de forma exhaustiva el 2026-06-29 14:15:23.847 UTC,</div>
+    <div class="legal">  por orden del cliente 'Banco Nacional de Chile' (autorizado por 'CISO - Maria</div>
+    <div class="legal">  Rodriguez'), utilizando la herramienta Hyperium ZERO-STATE v0.1.0.</div>
+    <div class="spacer"></div>
+    <div class="legal">  RESULTADO: El equipo se encuentra en <span class="clean">ESTADO LIMPIO (CLEAN)</span>. No se detectaron</div>
+    <div class="legal">  indicadores de compromiso previo, artefactos de malware, persistencia maliciosa,</div>
+    <div class="legal">  conexiones sospechosas ni anomalias de integridad del sistema.</div>
+    <div class="spacer"></div>
+    <div class="legal">  Esta certificacion se emite conforme a la norma ISO/IEC 27037:2012 y constituye</div>
+    <div class="legal">  evidencia digital inmutable sellada mediante cadena SHA-256.</div>
+    <div class="spacer"></div>
+    <div><span class="hash">  Firma digital (SHA-256): a7f3c2e1b9d4058f6e2a1c3b8d7f9e0a4b6c8d2e1f3a5b7c9d0e2f4a6b8c0d</span></div>
+    <div class="spacer"></div>
+    <div><span class="sep">  ============================================================</span></div>
+    <div><span class="dim">  ISO/IEC 27037:2012 Compliant</span></div>
+    <div><span class="accent">  Hyperiumia</span> <span class="dim">-- Patricio Tirado, CEO</span></div>
+    <div><span class="dim">  hyperiumia@protonmail.com</span></div>
+    <div><span class="sep">  ============================================================</span></div>
+  </div>
+</div>
+</body>
+</html>
